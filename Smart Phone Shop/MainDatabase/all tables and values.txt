@@ -1,0 +1,119 @@
+create database apple1;
+use apple1;	
+
+create table ftr
+(
+mno varchar(30) primary key,
+disp varchar(30),
+prsr varchar(30),
+cmr varchar(30),
+ram varchar(30),
+os varchar(30),
+strg varchar(30),
+rsn varchar(30),
+sprt varchar(30)
+);
+
+create table loguser
+(
+uname varchar(40) primary key,
+pass varchar(40),
+que varchar(80),
+ans varchar(80)
+);
+
+insert into loguser values('om','om123','first mobile','nokia');
+insert into loguser values('sunil','sk123','first mobile','samsung');
+insert into loguser values('sagar','sd123','first mobile','pocket');
+
+create table iphone
+(
+mno varchar(50) not null,
+imei numeric(15) primary key,
+btryno numeric(30) not null,
+price double not null,
+color varchar(30)
+);
+
+insert into iphone values('5s','123456789101231','1234567981011121','34200','Gray');
+insert into iphone values('5s','123456789101232','1234567981011122','34200','White');
+insert into iphone values('5s','123456789101233','1234567981011123','34200','Black');
+insert into iphone values('4','123456789101234','1234567981011124','22500','White');
+insert into iphone values('4','123456789101235','1234567981011125','22500','Gray');
+insert into iphone values('4','123456789101236','1234567981011126','22500','Black');
+insert into iphone values('5','123456789101237','1234567981011117','30400','Black');
+insert into iphone values('5','123456789101238','1234567981011118','30400','Gray');
+insert into iphone values('5','321456789101239','1234567981011119','30400','White');
+insert into iphone values('4s','321456789101234','2134567981011124','20500','White');
+insert into iphone values('4s','321456789101235','2134567981011125','20500','Gray');
+insert into iphone values('4s','321456789101236','2134567981011126','20500','Black');
+
+create table ipad
+(
+mno varchar(50) not null,
+imei numeric(15) primary key,
+btryno numeric(30) not null,
+price double not null,
+color varchar(30)
+);
+
+insert into ipad values('Air','113456789101231','1224567981011121','23200','Gray');
+insert into ipad values('Air','113456789101232','1234567981011122','23200','White');
+insert into ipad values('Air','113456789101233','1224567981011123','23200','Black');
+insert into ipad values('Mini','113456789101234','1224567981011124','25500','White');
+insert into ipad values('Mini','113456789101235','1224567981011125','25500','Gray');
+insert into ipad values('Mini','113456789101236','1224567981011126','25500','Black');
+insert into ipad values('Mini 2','113456789101237','1224567981011117','39400','Black');
+insert into ipad values('Mini 2','113456789101238','1224567981011118','39400','Gray');
+insert into ipad values('Mini 2','113456789101239','1224567981011119','39400','White');
+insert into ipad values('4','223456789101237','1324567981011117','43400','Black');
+insert into ipad values('4','223456789101238','1324567981011118','43400','Gray');
+insert into ipad values('4','223456789101239','1324567981011119','43400','White');
+
+	create table custinfo
+	(
+	custid int primary key,
+	cname varchar(80)not null,
+	caddrs varchar(100) not null,
+	contact numeric(10) not null,
+	vtc varchar(5) not null,
+	drl varchar(5) not null,
+	lb varchar(5) not null,
+	ac varchar(5) not null,
+	rc varchar(5) not null
+	);
+	create table mblinfo
+	(
+	imei numeric(30) primary key,
+	mno varchar(30) not null,
+	mname varchar(50)not null,
+	btrn numeric(30) not null,
+	wrnty varchar(5) not null,
+	color varchar(30) not null,
+	price numeric(20)not null
+	);
+	create table billmstr
+	(
+	bill_id int primary key,
+	cust_id int references custinfo(custid),
+	billdate date not null,
+	amount numeric(30)
+	);
+	create table trans
+	(
+	transid int primary key,
+	bno int references billmstr(billid),
+	imei1 numeric(30) references mblinfo(imei),
+	price numeric(30) not null
+	);
+
+	insert into trans value(11,1,1645654453568,37500);
+	insert into billmstr value(1,1,'2013.07.06',37500);
+	insert into custinfo value(1,'sagar','akole',9545807605,'y','n','y','y','n');
+	insert into mblinfo value(1645654453568,'5s','ipad',56489854822320,1,'gray',37500);
+		
+	select * from mblinfo;	
+	select * from custinfo;	
+	select * from billmstr;	
+	select * from trans;	
+	
